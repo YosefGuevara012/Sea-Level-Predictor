@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import linregress
 
@@ -15,16 +16,26 @@ def draw_plot():
     
     
     # Create first line of best fit
-    
-    ln_model_1 = linregress(X, y)
+  
+    ln_reg_1 = linregress(X, y)
+    X_2050 = np.array(range(df["Year"].min(),2051))
+    y_hat_1 = ln_reg_1.intercept + ln_reg_1.slope * X_2050
 
+    plt.scatter(X,y)
+    plt.plot(X_2050, y_hat_1)
+    plt.show()
 
     # Create second line of best fit
-    y_2050 = range(df["Year"].min(),2051)
+    X_2050 = range(df["Year"].min(),2051)
 
     # Add labels and title
-
+    
     
     # Save plot and return data for testing (DO NOT MODIFY)
     plt.savefig('sea_level_plot.png')
     return plt.gca()
+
+  
+  
+
+  
