@@ -26,7 +26,18 @@ def draw_plot():
     plt.show()
 
     # Create second line of best fit
-    X_2050 = range(df["Year"].min(),2051)
+    df_XX = df[df["Year"] >= 2000]
+
+    X_1 = df_XX["Year"]
+    y_1 = df_XX["CSIRO Adjusted Sea Level"]
+    
+    ln_reg_2 = linregress(X_1, y_1)
+    X_2_2050 = np.array(range(df_XX["Year"].min(),2051))
+    y_hat_1 = ln_reg_2.intercept + ln_reg_2.slope * X_2_2050
+    
+    plt.scatter(X_1,y_1)
+    plt.plot(X_2_2050, y_hat_1)
+    plt.show()
 
     # Add labels and title
     
