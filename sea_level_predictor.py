@@ -12,7 +12,7 @@ def draw_plot():
     X = df["Year"]
     y = df["CSIRO Adjusted Sea Level"]
     plt.scatter(X,y)
-    plt.show()
+ 
     
     
     # Create first line of best fit
@@ -23,7 +23,7 @@ def draw_plot():
 
     plt.scatter(X,y)
     plt.plot(X_2050, y_hat_1)
-    plt.show()
+
 
     # Create second line of best fit
     df_XX = df[df["Year"] >= 2000]
@@ -37,16 +37,19 @@ def draw_plot():
     
     plt.scatter(X_1,y_1)
     plt.plot(X_2_2050, y_hat_1)
-    plt.show()
+  
+    
 
     # Add labels and title
-    
+    plt.title("'Rise in Sea Level'")
+    plt.xlabel("'Year'")
+    plt.ylabel("Sea Level (inches)")
+
+    plt.show()
     
     # Save plot and return data for testing (DO NOT MODIFY)
     plt.savefig('sea_level_plot.png')
     return plt.gca()
-
-  
   
 
   
